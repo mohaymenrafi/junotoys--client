@@ -1,0 +1,12 @@
+.addProduct form {
+  display: flex;
+  flex-direction: column;
+}
+.addProduct form input,
+.addProduct form textarea {
+  padding: 1rem;
+  font-family: "DM Sans", sans-serif;
+  margin: 7px 0;
+  border-radius: 5px;
+  border: 2px solid #181d4e;
+}

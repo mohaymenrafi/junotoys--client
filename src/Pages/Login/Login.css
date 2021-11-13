@@ -1,0 +1,11 @@
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+.login form input,
+.login form textarea {
+  padding: 1rem;
+  font-family: "DM Sans", sans-serif;
+  margin: 7px 0;
+  border-radius: 50px;
+}

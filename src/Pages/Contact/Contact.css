@@ -1,0 +1,11 @@
+.contact form {
+  display: flex;
+  flex-direction: column;
+}
+.contact form input,
+.contact form textarea {
+  padding: 1rem;
+  font-family: "DM Sans", sans-serif;
+  margin: 7px 0;
+  border-radius: 5px;
+}

@@ -1,0 +1,11 @@
+.order form {
+  display: flex;
+  flex-direction: column;
+}
+.order form input,
+.order form textarea {
+  padding: 1rem;
+  font-family: "DM Sans", sans-serif;
+  margin: 7px 0;
+  border-radius: 5px;
+}

@@ -1,0 +1,7 @@
+.reviewsHome {
+  background: url(../../../images/review-bg.jpg) no-repeat center;
+  background-size: cover;
+}
+.reviewsHome-inner {
+  background-color: rgba(24, 29, 78, 0.95);
+}
