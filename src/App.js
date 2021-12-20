@@ -14,11 +14,13 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import AuthProvider from './AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ThankYou from './Pages/ThankYou/ThankYou';
+import ScrollToTop from './Utilities/ScrollToTop';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <Header />
         <Switch>
           <Route exact path="/">
