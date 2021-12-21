@@ -7,7 +7,7 @@ const ReviewsHome = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://quiet-hollows-53010.herokuapp.com/feedbacks`)
+      .get(`http://localhost:5000/feedbacks`)
       .then((res) => setReviews(res.data));
   }, []);
   return (

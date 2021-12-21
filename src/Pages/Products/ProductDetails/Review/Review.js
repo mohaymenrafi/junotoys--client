@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import './Review.css';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -6,18 +5,16 @@ import swal from '@sweetalert/with-react';
 import useAuth from '../../../../hooks/useAuth';
 
 /* eslint-disable react/prop-types */
-const Review = ({ products }) => {
+const Review = () => {
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios
-      .post('https://quiet-hollows-53010.herokuapp.com/feedbacks', data)
-      .then((res) => {
-        console.log(res);
-        swal("We've received your review!", '', 'success');
-        reset();
-      });
+    axios.post('http://localhost:5000/feedbacks', data).then((res) => {
+      console.log(res);
+      swal("We've received your review!", '', 'success');
+      reset();
+    });
   };
   return (
     <div className="bg-white p-6 mt-4 grid grid-cols-1">

@@ -5,29 +5,20 @@ import { saveToLocal } from '../../../Utilities/localStorage';
 import Details from './Details/Details';
 import Review from './Review/Review';
 
+/* eslint-disable react-hooks/exhaustive-deps */
+
 const ProductDetails = () => {
   const [products, setProducts] = useState({});
   const [info, setInfo] = useState('desc');
   const { productid } = useParams();
   useEffect(() => {
-    axios
-      .get(`https://quiet-hollows-53010.herokuapp.com/products/${productid}`)
-      .then((res) => {
-        console.log(res.data);
-        setProducts(res.data);
-      });
+    axios.get(`http://localhost:5000/products/${productid}`).then((res) => {
+      console.log(res.data);
+      setProducts(res.data);
+    });
   }, []);
-  const {
-    name,
-    price,
-    img,
-    rating,
-    shortDesc1,
-    shortDesc2,
-    longDesc,
-    _id,
-    sku,
-  } = products;
+  const { name, price, img, rating, shortDesc1, shortDesc2, longDesc, _id } =
+    products;
 
   return (
     <div className="bg-bgGray">
@@ -42,7 +33,7 @@ const ProductDetails = () => {
             <p>{rating}</p>
             <p className="mb-3 font-dm">{shortDesc1}</p>
             <p className="mb-3 font-dm">{shortDesc2}</p>
-            <Link exact to={`/order/${_id}`}>
+            <Link exact to="/products">
               <button
                 type="button"
                 className="bg-paste py-3 px-6 rounded-full font-qsand text-md text-white font-medium mt-5 shadow"
@@ -51,6 +42,15 @@ const ProductDetails = () => {
                 Add to Cart
               </button>
             </Link>
+            {/* <Link exact to={`/order/${_id}`}>
+              <button
+                type="button"
+                className="bg-paste py-3 px-6 rounded-full font-qsand text-md text-white font-medium mt-5 shadow"
+                onClick={() => saveToLocal(_id)}
+              >
+                Add to Cart
+              </button>
+            </Link> */}
           </div>
         </div>
       </div>

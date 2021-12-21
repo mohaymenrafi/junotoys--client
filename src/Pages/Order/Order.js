@@ -6,6 +6,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Order.css';
 /* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
 const Order = () => {
   const history = useHistory();
   // hook form import
@@ -14,13 +15,11 @@ const Order = () => {
   const [products, setProducts] = useState({});
   const { productid } = useParams();
   useEffect(() => {
-    axios
-      .get(`https://quiet-hollows-53010.herokuapp.com/products/${productid}`)
-      .then((res) => {
-        // console.log(res.data);
-        setProducts(res.data);
-        reset();
-      });
+    axios.get(`http://localhost:5000/products/${productid}`).then((res) => {
+      // console.log(res.data);
+      setProducts(res.data);
+      reset();
+    });
   }, [reset]);
   const { name, price, img } = products;
 
@@ -30,13 +29,11 @@ const Order = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    axios
-      .post('https://quiet-hollows-53010.herokuapp.com/orders', data)
-      .then((res) => {
-        console.log(res.data);
-        swal('Order is placed successfully!', '', 'success');
-        reset();
-      });
+    axios.post('http://localhost:5000/orders', data).then((res) => {
+      console.log(res.data);
+      swal('Order is placed successfully!', '', 'success');
+      reset();
+    });
     history.push('/products');
   };
   return (

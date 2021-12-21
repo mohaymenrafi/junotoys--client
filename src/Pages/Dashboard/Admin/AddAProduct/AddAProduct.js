@@ -9,7 +9,7 @@ const AddAProduct = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .post(`https://quiet-hollows-53010.herokuapp.com/products`, data)
+      .post(`http://localhost:5000/products`, data)
       .then((res) => {
         console.log(res.data);
         swal('Thanks!', 'The prodduct has been added to the shop!', 'success');

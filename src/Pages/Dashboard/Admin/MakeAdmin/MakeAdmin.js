@@ -12,7 +12,7 @@ const MakeAdmin = () => {
       (value) => {
         if (value) {
           axios
-            .put(`https://quiet-hollows-53010.herokuapp.com/users/admin`, data)
+            .put(`http://localhost:5000/users/admin`, data)
             .then((res) => {
               console.log(res.data);
               if (res.data.modifiedCount) {

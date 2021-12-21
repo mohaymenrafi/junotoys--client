@@ -15,6 +15,7 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ThankYou from './Pages/ThankYou/ThankYou';
 import ScrollToTop from './Utilities/ScrollToTop';
+import CartProvider from './Pages/Order/Cart/CartProvider';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/thank-you" component={ThankYou} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/cart" component={CartProvider} />
           <PrivateRoute path="/order/:productid">
             <Order />
           </PrivateRoute>

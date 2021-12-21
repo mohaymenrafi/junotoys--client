@@ -7,7 +7,7 @@ const ManageAllOrders = () => {
   const [monitorAllOrder, setMonitorAllOrder] = useState(true);
   useEffect(() => {
     axios
-      .get('https://quiet-hollows-53010.herokuapp.com/orders')
+      .get('http://localhost:5000/orders')
       .then((res) => {
         console.log(res.data);
         setAllOrders(res.data);
@@ -17,7 +17,7 @@ const ManageAllOrders = () => {
     swal('', 'Do you want to delete the order?', 'warning').then((value) => {
       if (value) {
         axios
-          .delete(`https://quiet-hollows-53010.herokuapp.com/orders/${id}`)
+          .delete(`http://localhost:5000/orders/${id}`)
           .then((res) => {
             console.log(res.data);
             if (res.data.deletedCount === 1) {
@@ -35,7 +35,7 @@ const ManageAllOrders = () => {
       (value) => {
         if (value) {
           axios
-            .put(`https://quiet-hollows-53010.herokuapp.com/orders/${id}`, {
+            .put(`http://localhost:5000/orders/${id}`, {
               status: 'processing',
             })
             .then((res) => {

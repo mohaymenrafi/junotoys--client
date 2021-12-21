@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import AdminProductCard from './AdminProductCard';
 
+/* eslint-disable react-hooks/exhaustive-deps */
+
 const ManageAllProducts = () => {
   const [products, setProducts] = useState([]);
   const [monitorAllOrder, setMonitorAllOrder] = useState(true);
   useEffect(() => {
     axios
-      .get('https://quiet-hollows-53010.herokuapp.com/products')
+      .get('http://localhost:5000/products')
       .then((res) => {
         setProducts(res.data);
         console.log(products);

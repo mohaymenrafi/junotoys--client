@@ -25,13 +25,13 @@ const useFirebase = () => {
   const saveUser = (email, displayName) => {
     const dbuser = { email, displayName };
     axios
-      .post(`https://quiet-hollows-53010.herokuapp.com/users`, dbuser)
+      .post(`http://localhost:5000/users`, dbuser)
       .then((res) => console.log(res.data));
   };
   const saveUserForGoogle = (email, displayName) => {
     const dbuser = { email, displayName };
     axios
-      .put(`https://quiet-hollows-53010.herokuapp.com/users`, dbuser)
+      .put(`http://localhost:5000/users`, dbuser)
       .then((res) => console.log(res.data));
   };
 
@@ -71,6 +71,7 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
+  /* eslint-disable no-unused-vars */
   const loginUser = (email, password, location, history) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password, location, history)
@@ -91,7 +92,7 @@ const useFirebase = () => {
       .catch((error) => console.error(error.message))
       .finally(() => setIsLoading(false));
   };
-
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       if (loggedUser) {
@@ -105,9 +106,7 @@ const useFirebase = () => {
   }, []);
 
   useEffect(() => {
-    axios(
-      `https://quiet-hollows-53010.herokuapp.com/users/${user?.email}`
-    ).then((res) => {
+    axios(`http://localhost:5000/users/${user?.email}`).then((res) => {
       setAdmin(res.data.admin);
     });
   }, [user?.email]);

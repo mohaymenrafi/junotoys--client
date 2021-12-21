@@ -3,6 +3,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 
+/* eslint-disable react-hooks/exhaustive-deps */
+
 const MyOrders = () => {
   // getting user info
   const { user } = useAuth();
@@ -11,9 +13,7 @@ const MyOrders = () => {
   const [monitorMyOrder, setMonitorMyOrder] = useState(false);
   useEffect(() => {
     axios
-      .get(
-        `https://quiet-hollows-53010.herokuapp.com/orders?email=${user?.email}`
-      )
+      .get(`http://localhost:5000/orders?email=${user?.email}`)
       .then((res) => {
         console.log(res.data);
         setAllOrders(res.data);
@@ -24,15 +24,13 @@ const MyOrders = () => {
   const handleDelete = (orderId) => {
     swal('', 'Do you want to delete the order?', 'warning').then((value) => {
       if (value) {
-        axios
-          .delete(`https://quiet-hollows-53010.herokuapp.com/orders/${orderId}`)
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.deletedCount === 1) {
-              swal('Order is deleted!', '', 'success');
-              setMonitorMyOrder(!monitorMyOrder);
-            }
-          });
+        axios.delete(`http://localhost:5000/orders/${orderId}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount === 1) {
+            swal('Order is deleted!', '', 'success');
+            setMonitorMyOrder(!monitorMyOrder);
+          }
+        });
       } else {
         swal('Order is not deleted!', '', 'info');
       }

@@ -1,6 +1,5 @@
 import swal from '@sweetalert/with-react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 /* eslint-disable react/prop-types */
@@ -11,15 +10,13 @@ const ProductCard = ({ product, monitorAllOrder, setMonitorAllOrder }) => {
   const handleDelete = (id) => {
     swal('', 'Do you want to delete the order?', 'warning').then((value) => {
       if (value) {
-        axios
-          .delete(`https://quiet-hollows-53010.herokuapp.com/products/${id}`)
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.deletedCount === 1) {
-              swal('Order is deleted!', '', 'success');
-              setMonitorAllOrder(!monitorAllOrder);
-            }
-          });
+        axios.delete(`http://localhost:5000/products/${id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount === 1) {
+            swal('Order is deleted!', '', 'success');
+            setMonitorAllOrder(!monitorAllOrder);
+          }
+        });
       } else {
         swal('Order is not deleted!', '', 'info');
       }

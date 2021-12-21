@@ -6,7 +6,7 @@ const ProductsHome = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://quiet-hollows-53010.herokuapp.com/products`)
+      .get(`http://localhost:5000/products`)
       .then((res) => setProducts(res.data));
   }, []);
   return (

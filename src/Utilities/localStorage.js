@@ -22,6 +22,27 @@ const saveToLocal = (id) => {
   updateItems(shoppingCart);
 };
 
+// Quantity increment
+const localIncrement = (id) => {
+  const exists = getItems();
+  let shoppingCart = {};
+  if (exists) {
+    shoppingCart = JSON.parse(exists);
+    shoppingCart[id] += 1;
+  }
+  updateItems(shoppingCart);
+};
+// decrement the quantity
+const localDecrement = (id) => {
+  const exists = getItems();
+  let shoppingCart = {};
+  if (exists) {
+    shoppingCart = JSON.parse(exists);
+    shoppingCart[id] -= 1;
+  }
+  updateItems(shoppingCart);
+};
+
 const removeFromCart = (id) => {
   const exists = getItems();
   if (exists) {
@@ -40,4 +61,11 @@ const getStoredCart = () => {
   return exists ? JSON.parse(exists) : {};
 };
 
-export { saveToLocal, removeFromCart, clearCart, getStoredCart };
+export {
+  saveToLocal,
+  removeFromCart,
+  clearCart,
+  getStoredCart,
+  localDecrement,
+  localIncrement,
+};
