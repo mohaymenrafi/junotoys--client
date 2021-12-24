@@ -15,35 +15,42 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ThankYou from './Pages/ThankYou/ThankYou';
 import ScrollToTop from './Utilities/ScrollToTop';
-import CartProvider from './Pages/Order/Cart/CartProvider';
+import Checkout from './Pages/Order/Checkout/Checkout';
+import Cart from './Pages/Order/Cart/Cart';
+import CartProvider from './CartProvider/CartProvider';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <ScrollToTop />
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/products" component={Products} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/thank-you" component={ThankYou} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/cart" component={CartProvider} />
-          <PrivateRoute path="/order/:productid">
-            <Order />
-          </PrivateRoute>
-          <Route path="/product/:productid" component={ProductDetails} />
-          <PrivateRoute path="/dashboard">
-            <Dashboard />
-          </PrivateRoute>
-          <Route path="*" component={NotFound} />
-        </Switch>
-        <Footer />
-      </Router>
+      <CartProvider>
+        <Router>
+          <ScrollToTop />
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/products" component={Products} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/thank-you" component={ThankYou} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/cart" component={Cart} />
+            <PrivateRoute path="/order/:productid">
+              <Order />
+            </PrivateRoute>
+            <PrivateRoute path="/checkout">
+              <Checkout />
+            </PrivateRoute>
+            <Route path="/product/:productid" component={ProductDetails} />
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
+            <Route path="*" component={NotFound} />
+          </Switch>
+          <Footer />
+        </Router>
+      </CartProvider>
     </AuthProvider>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import useFirebase from '../../../../hooks/useFirebase';
+import useAuth from '../../../../hooks/useAuth';
 
 const Topbar = () => {
-  const { user, logOut } = useFirebase();
+  const { user, logOut } = useAuth();
   return (
     <div
       className={`${!user?.email ? 'hidden' : 'bg-blue1 text-white px-4 py-2'}`}

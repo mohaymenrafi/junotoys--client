@@ -17,7 +17,6 @@ const Banner = () => (
             type="button"
             className="px-6 py-3 bg-paste text-white font-semibold rounded-full hover:bg-blue1 transition-all"
           >
-            {' '}
             Discover Now
           </button>
         </Link>

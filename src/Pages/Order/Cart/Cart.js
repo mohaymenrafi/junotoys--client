@@ -1,16 +1,15 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { Link } from 'react-router-dom';
-import { CartContext } from './CartProvider';
 import CartItems from './CartItems/CartItems';
 import EmptyCart from './EmptyCart';
+import useCartInfo from '../../../hooks/useCartInfo';
 
 const ContextCart = () => {
-  const { items, clearCartPage, totalItem, totalAmount } =
-    useContext(CartContext);
-  if (items.length === 0) return <EmptyCart />;
+  const { items, clearCartPage, totalItem, totalAmount } = useCartInfo();
+
+  if (items?.length === 0) return <EmptyCart />;
   return (
     <div className="container mx-auto border rounded-md py-16 px-6 my-12">
       {/* cart header  */}
@@ -59,12 +58,14 @@ const ContextCart = () => {
             >
               Clear Cart
             </button>
-            <button
-              type="button"
-              className="text-lg text-white font-semibold bg-green rounded px-4 py-2 mx-2"
-            >
-              Checkout
-            </button>
+            <Link to="/checkout">
+              <button
+                type="button"
+                className="text-lg text-white font-semibold bg-green rounded px-4 py-2 mx-2"
+              >
+                Checkout
+              </button>
+            </Link>
           </div>
           <div className="flex ml-auto">
             <h4 className="text-2xl text-black font-dm font-medium mr-4">

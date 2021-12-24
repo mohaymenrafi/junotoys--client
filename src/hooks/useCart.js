@@ -42,7 +42,7 @@ export default function useCart() {
   /* eslint-enable */
   useEffect(() => {
     getCartInfo();
-  }, []);
+  }, [state.items, state.totalItem]);
 
   useEffect(() => {
     dispatch({
@@ -79,5 +79,5 @@ export default function useCart() {
     });
   };
 
-  return [state, removeItemFromCart, clearCartPage, increase, decrease];
+  return { state, removeItemFromCart, clearCartPage, increase, decrease };
 }

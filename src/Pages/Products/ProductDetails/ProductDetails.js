@@ -13,7 +13,6 @@ const ProductDetails = () => {
   const { productid } = useParams();
   useEffect(() => {
     axios.get(`http://localhost:5000/products/${productid}`).then((res) => {
-      console.log(res.data);
       setProducts(res.data);
     });
   }, []);

@@ -1,12 +1,11 @@
 import { faMinus, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useContext } from 'react';
-import { CartContext } from '../CartProvider';
+import useCartInfo from '../../../../hooks/useCartInfo';
 
 /* eslint-disable react/prop-types */
 
 const CartItems = ({ img, name, price, _id, quantity }) => {
-  const { removeItemFromCart, increase, decrease } = useContext(CartContext);
+  const { removeItemFromCart, increase, decrease } = useCartInfo();
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 items-center border-b py-4">
       <div className="md:col-span-3">

@@ -7,12 +7,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Navbar.css';
+import styled from 'styled-components';
 import logo from '../../../../images/logo.png';
-import useFirebase from '../../../../hooks/useFirebase';
+import useCartInfo from '../../../../hooks/useCartInfo';
+import useAuth from '../../../../hooks/useAuth';
+
+const CartItemsStyled = styled.span`
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 10px;
+  position: absolute;
+  top: -8px;
+  right: -12px;
+`;
 
 const Navbar = () => {
-  const { user } = useFirebase();
+  const { user } = useAuth();
   const [navOpen, setNavOpen] = useState(false);
+  const { items } = useCartInfo();
   return (
     <div className="bg-transparent py-4">
       {/* nav parent div  */}
@@ -46,7 +58,7 @@ const Navbar = () => {
           } bg-blue1 col-span-2 absolute top-57px left-0 right-0 lg:h-auto lg:py-2 lg:relative lg:bg-transparent lg:top-0`}
           id="navbar"
         >
-          <ul className="flex flex-col text-white font-qsand font-semibold lg:flex-row lg:justify-end lg:items-center lg:text-blue1">
+          <ul className="flex flex-col text-white font-qsand font-semibold lg:flex-row lg:justify-end lg:items-center lg:text-blue1 pr-6">
             <NavLink
               exact
               className="py-2 px-2 mx-2 lg:hover:text-paste"
@@ -101,7 +113,17 @@ const Navbar = () => {
               ''
             )}
             <NavLink to="/cart">
-              <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
+              <div className="relative">
+                <span>
+                  <FontAwesomeIcon
+                    icon={faShoppingCart}
+                    className="cart-icon"
+                  />
+                </span>
+                <CartItemsStyled className="bg-blue1 text-white ">
+                  {items.length}
+                </CartItemsStyled>
+              </div>
             </NavLink>
           </ul>
         </div>
