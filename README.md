@@ -1,6 +1,10 @@
 # [Juno Toys](https://juno-toys.firebaseapp.com/)
 
-This is the official website of Juno toys
+This is a MERN stack e-commerce website.
+
+
+[Click Here](https://github.com/mohaymenrafi/junotoys-server) for checking out the server side repo
+
 
 ## Live Website Link
 
@@ -34,3 +38,4 @@ https://juno-toys.firebaseapp.com/
 - Online Payment Gateways
 - User Rating
 # niche-website-client-side-mohaymenrafi
+
